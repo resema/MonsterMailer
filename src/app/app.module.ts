@@ -7,12 +7,12 @@ import { ClassListComponent } from './mailer/classes/class-list/class-list.compo
 import { ClassItemComponent } from './mailer/classes/class-list/class-item/class-item.component';
 import { VisitorListComponent } from './mailer/visitors/visitor-list/visitor-list.component';
 import { VisitorDetailComponent } from './mailer/visitors/visitor-list/visitor-detail/visitor-detail.component';
-import { DropdownDirective } from './shared/dropdown.directive';
+import { DropdownDirective } from './settings/shared/dropdown.directive';
 import { HeaderComponent } from './header/header/header.component';
 import { MailerComponent } from './mailer/mailer.component';
 import { MessageComponent } from './message/message.component';
 import { SettingsComponent } from './settings/settings.component';
-import { HighlightDirective } from './shared/highlight.directive';
+import { HighlightDirective } from './settings/shared/highlight.directive';
 import { ClassDetailComponent } from './mailer/classes/class-detail/class-detail.component';
 
 @NgModule({

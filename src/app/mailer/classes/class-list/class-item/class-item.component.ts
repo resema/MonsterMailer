@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ClassService } from 'src/app/shared/class.service';
-import { Class } from 'src/app/shared/class.model';
+import { ClassService } from 'src/app/settings/shared/class.service';
+import { Class } from 'src/app/settings/shared/class.model';
 
 @Component({
   selector: 'app-class-item',
@@ -18,5 +18,7 @@ export class ClassItemComponent implements OnInit {
   onSelected() {
     this.classService.classSelected.emit(this.class);
   }
+
+  
 
 }

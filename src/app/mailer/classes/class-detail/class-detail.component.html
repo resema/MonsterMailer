@@ -1,1 +1,37 @@
-<p>class-detail works!</p>
+<div class="row">
+    <div class="col-xs-12">
+        <h4 class='underlined'>{{ class.name }} - {{ class.startDate }}</h4>
+    </div>
+    <div class="col-xs-12">
+        <app-visitor-list [class]="class"></app-visitor-list>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12 form-group">
+        <label for="youtubeLink">Enter Link here:</label>
+        <input type="text" id="youtubeLink" class="form-control" #youtubeLink>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success" 
+                type="submit" 
+                [disabled]="linkConfirmed()" 
+                (click)="onAddLink()">Confirm Link</button>
+        <button class="btn btn-danger" 
+                type="submit" 
+                [disabled]="!linkConfirmed()" 
+                (click)="onResetLink()">Reset Link</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <div *ngIf="displayLink(); else warningText">
+            <p>Send this link <b class="underlined">{{ displayLink() }}</b> to the clients of the selected class:</p>
+            <button class="btn btn-success" type="submit" (click)="onSendLink()">Send Link</button>
+        </div>
+        <ng-template #warningText><p>Please enter a valid Link!</p></ng-template>
+    </div>
+</div>

@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { ContentService } from '../shared/content.service';
-import { Content } from '../shared/content.model';
-import { Class } from '../shared/class.model';
-import { ClassService } from '../shared/class.service';
+import { LinkService } from '../settings/shared/link.service';
+import { Link } from '../settings/shared/link.model';
+import { Class } from '../settings/shared/class.model';
+import { ClassService } from '../settings/shared/class.service';
 
 @Component({
   selector: 'app-mailer',
@@ -11,29 +11,14 @@ import { ClassService } from '../shared/class.service';
 })
 export class MailerComponent implements OnInit {
   selectedClass: Class;
-  @ViewChild('youtubeLink', {static: true}) youtubeLinkRef: ElementRef;
 
-  constructor(private contentService: ContentService,
+  constructor(private linkService: LinkService,
               private classService: ClassService) {}
 
   ngOnInit(): void {
     this.classService.classSelected.subscribe((selected: Class) => {
       this.selectedClass = selected;
     });
-  }
-
-  onAddLink() {
-    let newContent = new Content();
-    newContent.setLink(this.youtubeLinkRef.nativeElement.value);
-    this.contentService.addContent(newContent);
-  }
-
-  onSendLink() {
-    
-  }
-
-  displayLink() {
-    return this.youtubeLinkRef.nativeElement.value;
   }
 
 }

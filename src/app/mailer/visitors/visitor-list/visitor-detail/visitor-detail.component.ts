@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Client } from 'src/app/settings/shared/client.model';
 
 @Component({
   selector: 'app-visitor-detail',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./visitor-detail.component.css']
 })
 export class VisitorDetailComponent implements OnInit {
+  @Input() client: Client;
 
   constructor() { }
 

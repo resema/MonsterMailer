@@ -1,1 +1,8 @@
-<p>visitor-list works!</p>
+<div class="row">
+    <div class="col-xs-12">
+        <app-visitor-detail 
+            *ngFor="let clElem of class.clients"
+            [client]="clElem">
+        </app-visitor-detail>
+    </div>
+</div>

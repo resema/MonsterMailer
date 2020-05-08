@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
-import { Class } from 'src/app/settings/shared/class.model';
-import { LinkService } from 'src/app/settings/shared/link.service';
-import { Link } from 'src/app/settings/shared/link.model';
+import { Class } from 'src/app/shared/class.model';
+import { LinkService } from 'src/app/shared/link.service';
+import { Link } from 'src/app/shared/link.model';
+import { SocketioService } from 'src/app/server/socketio.service';
+import { ClientUpdateService } from 'src/app/shared/client-update.service';
+import { HttpService } from 'src/app/server/http.service';
 
 @Component({
   selector: 'app-class-detail',
@@ -12,9 +15,13 @@ export class ClassDetailComponent implements OnInit {
   @Input() class: Class;
   @ViewChild('youtubeLink', {static: true}) youtubeLinkRef: ElementRef;
   isConfirmed: boolean = false;
+  sending: boolean = false;
   confirmedLink: Link = new Link('');
 
-  constructor(private linkService: LinkService) { }
+  constructor(private linkService: LinkService,
+              private socketService: SocketioService,
+              private clientUpdate: ClientUpdateService,
+              private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.linkService.linkChanged.subscribe((link: Link) => {
@@ -24,8 +31,11 @@ export class ClassDetailComponent implements OnInit {
 
 
   onAddLink() {
-    this.linkService.addLink(new Link(this.youtubeLinkRef.nativeElement.value));
-    this.isConfirmed = true;
+    let newLink = this.youtubeLinkRef.nativeElement.value;
+    if (newLink !== '') {
+      this.linkService.addLink(new Link(newLink));
+      this.isConfirmed = true;
+    }
   }
 
   onResetLink() {
@@ -34,11 +44,26 @@ export class ClassDetailComponent implements OnInit {
   }
 
   onSendLink() {
+    this.httpService.onPostMessage(this.confirmedLink, this.class)
+    this.socketService.sendRunMainLoop(this.class);
+    this.clientUpdate.isSending = true;
+  }
 
+  onStopSendLink() {
+    this.socketService.sendStopMainLoop();
+    this.clientUpdate.isSending = false;
+  }
+
+  isSending() {
+    return this.clientUpdate.isSending;
   }
 
   linkConfirmed() {
     return this.isConfirmed
+  }
+
+  isConfirmedOrSending() {
+    return this.linkConfirmed() && !this.isSending();
   }
 
   displayLink() {

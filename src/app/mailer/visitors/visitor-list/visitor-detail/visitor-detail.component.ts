@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Client } from 'src/app/settings/shared/client.model';
+import { Client } from 'src/app/shared/client.model';
 
 @Component({
   selector: 'app-visitor-detail',
@@ -12,6 +12,9 @@ export class VisitorDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelected(): void {
   }
 
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { LinkService } from '../settings/shared/link.service';
-import { Link } from '../settings/shared/link.model';
-import { Class } from '../settings/shared/class.model';
-import { ClassService } from '../settings/shared/class.service';
+import { LinkService } from '../shared/link.service';
+import { Link } from '../shared/link.model';
+import { Class } from '../shared/class.model';
+import { ClassService } from '../shared/class.service';
+import { ClientUpdateService } from '../shared/client-update.service';
 
 @Component({
   selector: 'app-mailer',
@@ -12,8 +13,7 @@ import { ClassService } from '../settings/shared/class.service';
 export class MailerComponent implements OnInit {
   selectedClass: Class;
 
-  constructor(private linkService: LinkService,
-              private classService: ClassService) {}
+  constructor(private classService: ClassService) {}
 
   ngOnInit(): void {
     this.classService.classSelected.subscribe((selected: Class) => {

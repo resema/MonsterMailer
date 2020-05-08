@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Class } from 'src/app/settings/shared/class.model';
-import { Client } from 'src/app/settings/shared/client.model';
+import { Class } from 'src/app/shared/class.model';
+import { Client } from 'src/app/shared/client.model';
 
 @Component({
   selector: 'app-visitor-list',

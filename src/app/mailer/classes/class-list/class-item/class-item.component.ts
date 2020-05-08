@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ClassService } from 'src/app/settings/shared/class.service';
-import { Class } from 'src/app/settings/shared/class.model';
+import { ClassService } from 'src/app/shared/class.service';
+import { Class } from 'src/app/shared/class.model';
+import { HttpService } from 'src/app/server/http.service';
+import { ClientUpdateService } from 'src/app/shared/client-update.service';
 
 @Component({
   selector: 'app-class-item',
@@ -10,15 +12,18 @@ import { Class } from 'src/app/settings/shared/class.model';
 export class ClassItemComponent implements OnInit {
   @Input() class: Class;
 
-  constructor(private classService: ClassService) { }
+  constructor(private httpService: HttpService,
+              private classService: ClassService,
+              private clientUpdate: ClientUpdateService) { }
 
   ngOnInit(): void {
   }
 
   onSelected() {
-    this.classService.classSelected.emit(this.class);
+    if(!this.clientUpdate.isSending) {
+      this.httpService.onGetClientsById(this.class.id);
+      this.classService.classSelected.emit(this.class);
+    }
   }
-
-  
 
 }

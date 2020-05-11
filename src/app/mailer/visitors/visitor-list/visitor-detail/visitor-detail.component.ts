@@ -8,6 +8,7 @@ import { Client } from 'src/app/shared/client.model';
 })
 export class VisitorDetailComponent implements OnInit {
   @Input() client: Client;
+  @Input() total: number;
 
   constructor() { }
 

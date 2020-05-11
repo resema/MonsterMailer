@@ -9,7 +9,7 @@ function createWindow() {
 	win.loadURL('http://localhost:4242');
 
   // The following is optional and will open the DevTools:
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 
   win.webContents.on("did-fail-load", function() {
     console.log("did-fail-load");

@@ -4,3 +4,4 @@ Release notes:
 v1.0.0.0 - Initial version
 v1.0.1.0 - Message is displayed
 v1.0.2.0 - Staff is displayed
+v1.0.3.0 - Total clients added

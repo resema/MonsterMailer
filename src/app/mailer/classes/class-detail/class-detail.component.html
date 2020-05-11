@@ -9,8 +9,11 @@
 <hr>
 <div class="row">
     <div class="col-md-12 form-group">
-        <label for="youtubeLink">Enter Link here:</label>
-        <input type="text" id="youtubeLink" class="form-control" [disabled]="linkConfirmed()" #youtubeLink>
+        <input type="text" 
+               id="youtubeLink" 
+               class="form-control" 
+               [disabled]="linkConfirmed()" 
+               placeholder="Please enter a valid link!">
     </div>
 </div>
 <div class="row">
@@ -28,7 +31,7 @@
     </div>
 
     <div class="col-xs-t">
-        <div *ngIf="displayLink(); else warningText">
+        <div *ngIf="displayLink()">
             <div class="btn-toolbar">
                 <button class="btn btn-success" 
                         type="submit" 
@@ -40,7 +43,6 @@
                         (click)="onStopSendLink()">Stop Sending Link</button>
             </div>
         </div>
-        <ng-template #warningText><p>Please enter a valid Link!</p></ng-template>
     </div>
 </div>
 <hr>

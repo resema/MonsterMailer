@@ -13,8 +13,7 @@ import { HttpService } from 'src/app/server/http.service';
 })
 export class ClassDetailComponent implements OnInit {
   @Input() class: Class;
-  @ViewChild('youtubeLink', {static: true})
-  youtubeLinkRef: ElementRef;
+  @ViewChild('youtubeLink', {static: true}) youtubeLinkRef: ElementRef;
   isConfirmed: boolean = false;
   sending: boolean = false;
   confirmedLink: Link = new Link('');
@@ -30,7 +29,6 @@ export class ClassDetailComponent implements OnInit {
     });
   }
 
-
   onAddLink() {
     let newLink = this.youtubeLinkRef.nativeElement.value;
     if (newLink !== '') {
@@ -41,8 +39,9 @@ export class ClassDetailComponent implements OnInit {
   }
 
   onResetLink() {
+    this.youtubeLinkRef.nativeElement.value = '';
     this.linkService.addLink(new Link(''));
-    this.isConfirmed = false
+    this.isConfirmed = false;
   }
 
   onSendLink() {

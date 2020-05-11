@@ -13,7 +13,8 @@
                id="youtubeLink" 
                class="form-control" 
                [disabled]="linkConfirmed()" 
-               placeholder="Please enter a valid link!">
+               placeholder="Please enter a valid link!"
+               #youtubeLink>
     </div>
 </div>
 <div class="row">
@@ -36,7 +37,7 @@
                 <button class="btn btn-success" 
                         type="submit" 
                         [disabled]="isSending()"
-                        (click)="onSendLink()">Send Link</button>
+                        (click)="onSendLink()">Start Sending Link</button>
                 <button class="btn btn-danger" 
                         type="submit" 
                         [disabled]="!isSending()"

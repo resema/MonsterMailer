@@ -13,7 +13,8 @@ import { HttpService } from 'src/app/server/http.service';
 })
 export class ClassDetailComponent implements OnInit {
   @Input() class: Class;
-  @ViewChild('youtubeLink', {static: true}) youtubeLinkRef: ElementRef;
+  @ViewChild('youtubeLink', {static: true})
+  youtubeLinkRef: ElementRef;
   isConfirmed: boolean = false;
   sending: boolean = false;
   confirmedLink: Link = new Link('');

@@ -12,7 +12,7 @@
     "gui": "electron .",
     "server": "lite-server",
     "frontend" : "npm run server & npm run gui",
-    "rebuild": "ng build --prod && ((npm run server & (cd ../TinyMailer && node tinymailer.js)) & electron .)",
+    "rebuild": "ng build --prod && ((npm run server & (cd ../TinyMailer && node tinymailer.js)) & electron .) && killall node",
     "launch": "(npm run server & (cd ../TinyMailer && node tinymailer.js)) & electron . && killall node"
   },
   "private": true,

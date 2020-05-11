@@ -9,16 +9,16 @@ import { SafeHtml } from '@angular/platform-browser';
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
-  message: SafeHtml;
+  message: string;
 
   constructor(private httpService: HttpService,
               private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.httpService.onGetMessage()
+    this.httpService.onGetMessage();
 
     this.messageService.messageReceived.subscribe(_ => {
-      // this.message = this.messageService.getMessage();
+      this.message = this.messageService.getMessage();
     });
   }
 

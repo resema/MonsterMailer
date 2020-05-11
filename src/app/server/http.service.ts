@@ -73,7 +73,7 @@ export class HttpService {
     onGetMessage() {
         this.http.get('http://localhost:4444/api/message')
         .subscribe(responseData => {
-            this.messageService.addMessage(responseData.toString());
+            this.messageService.addMessage(responseData['htmltext'].toString());
             this.messageService.messageReceived.emit();
         });
     }

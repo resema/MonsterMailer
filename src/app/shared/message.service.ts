@@ -9,8 +9,10 @@ export class MessageService {
 
 
     addMessage(msg: string) {
+        this.message = msg;
     }
 
-    getMessage() {
+    getMessage(): string {
+        return this.message;
     }
 }

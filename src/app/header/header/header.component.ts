@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SocketioService } from 'src/app/server/socketio.service';
+import { ClientUpdateService } from 'src/app/shared/client-update.service';
 
 @Component({
     selector: 'app-header',
@@ -9,10 +10,13 @@ export class HeaderComponent {
     collapsed: boolean = true;
     @Output() featureSelected = new EventEmitter<string>();
 
-    constructor(private socketService: SocketioService) {}
+    constructor(private socketService: SocketioService,
+                private clientUpdate: ClientUpdateService) {}
 
     onSelect(feature: string) {
-        this.featureSelected.emit(feature);
+        if(!this.clientUpdate.isSending) {
+            this.featureSelected.emit(feature);
+        }
     }
 
     onStopBackend() {

@@ -16,6 +16,7 @@ import { MessageComponent } from './message/message.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HighlightDirective } from './shared/highlight.directive';
 import { ClassDetailComponent } from './mailer/classes/class-detail/class-detail.component';
+import { StaffComponent } from './staff/staff.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ClassDetailComponent } from './mailer/classes/class-detail/class-detail
     HeaderComponent,
     MailerComponent,
     MessageComponent,
+    StaffComponent,
     SettingsComponent,
     HighlightDirective,
     ClassDetailComponent

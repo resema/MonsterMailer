@@ -6,6 +6,7 @@ import { Link } from '../shared/link.model';
 import { Client } from '../shared/client.model';
 import { ClassService } from '../shared/class.service';
 import { MessageService } from '../shared/message.service';
+import { StaffService } from '../shared/staff.service';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,8 @@ export class HttpService {
 
     constructor(private http: HttpClient,
                 private classService: ClassService,
-                private messageService: MessageService) {}
+                private messageService: MessageService,
+                private staffService: StaffService) {}
 
     onGetClasses() {
         this.http.get('http://localhost:4444/api/classes')
@@ -75,6 +77,19 @@ export class HttpService {
         .subscribe(responseData => {
             this.messageService.addMessage(responseData['htmltext'].toString());
             this.messageService.messageReceived.emit();
+        });
+    }
+
+    onGetStaff() {
+        this.http.get('http://localhost:4444/api/staff')
+        .subscribe(responseData => {
+            let staff: Client[] = [];
+            let addresses = responseData["addresses"];
+            addresses.forEach(elem => {
+                let client = new Client(elem.firstname, elem.lastname, elem.emailaddr);
+                staff.push(client);
+            });
+            this.staffService.staffReceived.emit(staff);
         });
     }
 

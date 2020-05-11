@@ -35,6 +35,7 @@ export class ClassDetailComponent implements OnInit {
     if (newLink !== '') {
       this.linkService.addLink(new Link(newLink));
       this.isConfirmed = true;
+      this.httpService.onPostMessage(this.confirmedLink, this.class)
     }
   }
 
@@ -44,7 +45,6 @@ export class ClassDetailComponent implements OnInit {
   }
 
   onSendLink() {
-    this.httpService.onPostMessage(this.confirmedLink, this.class)
     this.socketService.sendRunMainLoop(this.class);
     this.clientUpdate.isSending = true;
   }

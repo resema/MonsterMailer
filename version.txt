@@ -1,0 +1,4 @@
+{
+    "appname": "TinyCockpit",
+    "version": "v1.0.0.0"
+}

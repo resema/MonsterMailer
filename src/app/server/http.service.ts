@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Class } from '../shared/class.model';
 import { Link } from '../shared/link.model';
@@ -12,6 +12,7 @@ import { MessageService } from '../shared/message.service';
 })
 
 export class HttpService {
+    private options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
 
     constructor(private http: HttpClient,
                 private classService: ClassService,
@@ -82,7 +83,7 @@ export class HttpService {
             link,
             selClass
         };
-        this.http.post('http://localhost:4444/api/message', postData)
+        this.http.post('http://localhost:4444/api/message', postData, this.options)
         .subscribe(res => {
             console.log(res);
         });

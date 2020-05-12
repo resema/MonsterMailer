@@ -7,3 +7,4 @@ v1.0.2.0 - Staff is displayed
 v1.0.3.0 - Total clients added
 v1.0.3.1 - Sending link bugfix
 v1.0.3.2 - Resetting link bugfix
+v1.0.4.0 - Class listening adapted

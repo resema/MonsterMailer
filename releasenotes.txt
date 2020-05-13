@@ -9,3 +9,4 @@ v1.0.3.1 - Sending link bugfix
 v1.0.3.2 - Resetting link bugfix
 v1.0.4.0 - Class listening adapted
 v1.0.4.1 - Win32 fix
+v1.0.5.0 - New Link marked message

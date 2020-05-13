@@ -16,7 +16,8 @@ export class ClassDetailComponent implements OnInit {
   @ViewChild('youtubeLink', {static: true}) youtubeLinkRef: ElementRef;
   isConfirmed: boolean = false;
   sending: boolean = false;
-  confirmedLink: Link = new Link('');
+  confirmedLink: Link = new Link('', false);
+  cbSecond: boolean;
 
   constructor(private linkService: LinkService,
               private socketService: SocketioService,
@@ -32,7 +33,7 @@ export class ClassDetailComponent implements OnInit {
   onAddLink() {
     let newLink = this.youtubeLinkRef.nativeElement.value;
     if (newLink !== '') {
-      this.linkService.addLink(new Link(newLink));
+      this.linkService.addLink(new Link(newLink, this.cbSecond));
       this.isConfirmed = true;
       this.httpService.onPostMessage(this.confirmedLink, this.class)
     }
@@ -42,6 +43,11 @@ export class ClassDetailComponent implements OnInit {
     this.youtubeLinkRef.nativeElement.value = '';
     this.linkService.addLink(new Link(''));
     this.isConfirmed = false;
+  }
+
+  onCheckboxChange(e) {
+    this.cbSecond = e.target.checked;
+    console.log(this.cbSecond);
   }
 
   onSendLink() {

@@ -1,5 +1,6 @@
 export class Link {
     
-    constructor(public link: string) {}
+    constructor(public link: string,
+                public second: boolean = false) {}
 
 }

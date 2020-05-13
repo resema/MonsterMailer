@@ -8,14 +8,20 @@
 </div>
 <hr>
 <div class="row">
-    <div class="col-md-12 form-group">
+    <div class="col-md-8 form-group">
         <input type="text" 
                id="youtubeLink" 
                class="form-control" 
                [disabled]="linkConfirmed()" 
                placeholder="Please enter a valid link!"
-               #youtubeLink>
+               #youtubeLink> 
     </div>
+    <div class="col-md-4 checkbox">
+        <label>
+            <input type="checkbox"
+            (change)="onCheckboxChange($event)"
+            [disabled]="linkConfirmed()">Message marked as 'New Link'</label>
+      </div>
 </div>
 <div class="row">
     <div class="col-xs-6">
